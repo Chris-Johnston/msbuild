@@ -6,6 +6,7 @@
 
     <NoPackageAnalysis>true</NoPackageAnalysis>
     <NuspecProperties>$(NuspecProperties);repoRoot=$(RepoRoot.TrimEnd('\\/'))</NuspecProperties>
+    <AppendBuildMetadataToVersion>false</AppendBuildMetadataToVersion>
   </PropertyGroup>
 
   <Import Project="..\NuspecProject.targets" />

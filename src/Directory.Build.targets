@@ -122,7 +122,8 @@
     -->
     <PropertyGroup Condition=" '$(PrereleaseVersion)' != '' and '$(DisableNerdbankVersioning)' != 'true'">
       <!-- Override the NuGet package version provided by Nerdbank.GitVersioning -->
-      <PackageVersion>$(MajorMinorVersion).0$(PrereleaseVersion).$(BuildVersionNumberComponent)$(SemVerBuildSuffix)</PackageVersion>
+      <PackageVersion>$(MajorMinorVersion).0$(PrereleaseVersion).$(BuildVersionNumberComponent)</PackageVersion>
+      <PackageVersion Condition=" '$(AppendBuildMetadataToVersion)' != 'false' ">$(PackageVersion)$(SemVerBuildSuffix)</PackageVersion>
 
       <!-- When building locally, append .private to distinguish official builds -->
       <PackageVersion Condition="'$(OfficialBuild)' != 'true'">$(PackageVersion).private</PackageVersion>
