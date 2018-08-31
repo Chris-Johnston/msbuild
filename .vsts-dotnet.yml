@@ -33,10 +33,16 @@ steps:
     arguments: 'install --tool-path artifacts nbgv --version 2.2.13'
 
 - task: CmdLine@1
-  displayName: Set version with nbgv
+  displayName: Compute version with nbgv
   inputs:
     filename: 'artifacts\nbgv.exe'
     arguments: 'cloud --all-vars'
+
+- task: CmdLine@1
+  displayName: Set version with nbgv
+  inputs:
+    filename: 'artifacts\nbgv.exe'
+    arguments: 'cloud --version=$(NBGV_SemVer1)'
 
 - task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@1
   displayName: Install Swix Plugin
