@@ -38,12 +38,6 @@ steps:
     filename: 'artifacts\nbgv.exe'
     arguments: 'cloud --all-vars'
 
-- task: CmdLine@1
-  displayName: Set version with nbgv
-  inputs:
-    filename: 'artifacts\nbgv.exe'
-    arguments: 'cloud --version=$(NBGV_SemVer1)'
-
 - task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@1
   displayName: Install Swix Plugin
   inputs:
@@ -69,10 +63,10 @@ steps:
   condition: always()
 
 - task: CmdLine@1
-  displayName: Set build version to meaningful one
+  displayName: Set final version with nbgv
   inputs:
     filename: 'artifacts\nbgv.exe'
-    arguments: 'cloud'
+    arguments: 'cloud --version=$(NBGV_SemVer1)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: logs'
